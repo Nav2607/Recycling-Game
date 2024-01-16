@@ -10,7 +10,7 @@ var item, itemList;
 var bgImage;
 var score =0;
 var life=3;
-var scoreSound, loseSound;
+
 
 //preload all the sprites
 function preload() {
@@ -34,9 +34,8 @@ function preload() {
   milk = loadImage("images/milk.png");
   glassbottle = loadImage("images/glassbottle.png");
   plastic_cup = loadImage("images/plastic-cup.png");
-  scoreSound = loadSound('sounds/score.mp3');
-  loseSound = loadSound('sounds/lose.mp3');
 }
+
 function setup() {
   createCanvas(1000, 550);
   //Create bin sprite
@@ -79,7 +78,6 @@ function draw() {
     if(recycleGroup.isTouching(bin)){
       recycleGroup.destroyEach();
       score=score+1
-      scoreSound.play();
     }
 
     textSize(45);
@@ -92,7 +90,6 @@ function draw() {
   if(bin.isTouching(enemyGroup)){
     enemyGroup.destroyEach();
     life=life-1;
-    loseSound.play();
   }
 
   if(life===0){
